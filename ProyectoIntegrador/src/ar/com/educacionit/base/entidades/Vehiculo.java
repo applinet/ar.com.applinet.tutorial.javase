@@ -1,3 +1,5 @@
+package ar.com.educacionit.base.entidades;
+
 /*
  * Vehiculo.java
  *
@@ -7,7 +9,7 @@
  *
  * @author Sebastian S. Sanga <SebastianSanga@educacionIT.com.ar>
  */
-public class Vehiculo {
+public abstract class Vehiculo {
     
     /** Creates a new instance of Vehiculo */
     public Vehiculo() {

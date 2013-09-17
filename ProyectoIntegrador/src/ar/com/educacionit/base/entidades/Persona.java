@@ -1,3 +1,5 @@
+package ar.com.educacionit.base.entidades;
+
 /*
  * Persona.java
  *
@@ -7,7 +9,7 @@
  *
  * @author Sebastian S. Sanga <SebastianSanga@educacionIT.com.ar>
  */
-public class Persona {
+public abstract class Persona {
     
     /** Creates a new instance of Persona */
     public Persona() {
