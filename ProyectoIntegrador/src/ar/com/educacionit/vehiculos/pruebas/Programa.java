@@ -3,6 +3,7 @@ package ar.com.educacionit.vehiculos.pruebas;
 
 import ar.com.educacionit.base.entidades.Vehiculo;
 import ar.com.educacionit.base.entidades.Persona;
+import ar.com.educacionit.vehiculos.entidades.Auto;
 
 /*
  * TestIntegrador01.java
@@ -30,15 +31,18 @@ public class Programa {
 //        System.out.println("Nombre: " + p1.getNombre());
 //        System.out.println("Apellido: " + p1.getApellido());
 //        System.out.println("Numero de Documento: " + p1.getNumeroDocumento());
-//        
-//        // Construye e informa un vehiculo
+        
+        // Construye e informa un vehiculo
 //        System.out.println("\nCreando un vehiculo....");
 //        Vehiculo v1 = new Vehiculo(215, 345, 98);
 //        System.out.println("Ancho:" + v1.getAncho());
 //        System.out.println("Altura: " + v1.getAltura());
 //        System.out.println("Largo: " + v1.getLargo());
      
-        
+        Auto auto = new Auto("reno", "clio", "verde", 1,2,3);
+                
+        System.out.println("cc=" + auto.toString());
+                     
         
     }
     

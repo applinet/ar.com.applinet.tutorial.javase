@@ -12,8 +12,8 @@ package ar.com.educacionit.base.entidades;
 public abstract class Vehiculo {
     
     /** Creates a new instance of Vehiculo */
-    public Vehiculo() {
-    }
+//    public Vehiculo() {
+//    }
     
     public Vehiculo(int ancho, int largo, int altura){
         setAncho(ancho);

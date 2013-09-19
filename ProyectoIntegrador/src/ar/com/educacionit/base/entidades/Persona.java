@@ -12,8 +12,8 @@ package ar.com.educacionit.base.entidades;
 public abstract class Persona {
     
     /** Creates a new instance of Persona */
-    public Persona() {
-    }
+//    public Persona() {
+//    }
     
     public Persona(String nombre, String apellido, String numeroDocumento) {
         setNombre(nombre);
