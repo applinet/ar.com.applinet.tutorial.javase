@@ -4,6 +4,13 @@
  */
 package ar.com.educacionit.vehiculos.ventanas;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author educacionit
@@ -15,8 +22,41 @@ public class AutosVentana extends javax.swing.JInternalFrame {
      */
     public AutosVentana() {
         initComponents();
+        
+        cargarCombo("/ar/com/educacionit/vehiculos/recursos/marcas.txt", jComboMarca);
+        cargarCombo("/ar/com/educacionit/vehiculos/recursos/colores.txt", jComboColor);
+        cargarModelos();        
     }
-
+    
+    private void cargarCombo(String archivoALeer, javax.swing.JComboBox nombreCombo) {
+        InputStreamReader isr;
+        isr = new InputStreamReader( AutosVentana.class.getResourceAsStream(archivoALeer) );
+        BufferedReader readerMejorado = new BufferedReader( isr );
+        
+        boolean eof = false;
+        String lineaLeida = "";
+        nombreCombo.addItem("Seleccione...");
+        while ( !eof ){
+            try {
+                lineaLeida = readerMejorado.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(AutosVentana.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             if( lineaLeida != null ){
+                nombreCombo.addItem(lineaLeida);
+             }else{
+                eof = true;
+             }
+        }
+    }
+     
+    private void cargarModelos() {
+        jComboModelo.addItem("Seleccione...");
+        for (int i = 1985; i <= Calendar.getInstance().get(Calendar.YEAR); i++) {
+            jComboModelo.addItem(i);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,11 +99,6 @@ public class AutosVentana extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de Autos"));
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -162,21 +197,18 @@ public class AutosVentana extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Precio");
 
-        jComboMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboMarcaActionPerformed(evt);
             }
         });
 
-        jComboColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboColorActionPerformed(evt);
             }
         });
 
-        jComboModelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboModeloActionPerformed(evt);
@@ -352,6 +384,8 @@ public class AutosVentana extends javax.swing.JInternalFrame {
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
@@ -363,10 +397,9 @@ public class AutosVentana extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButtonNuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevo1ActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonNuevo1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
